@@ -3,7 +3,7 @@ $('#destroy').on('click', clearDiv)
 
 async function getGif() {
     let userSearch = $('input').val();
-    let response = await axios.get(`http://api.giphy.com/v1/gifs/search?q=${userSearch}&api_key=MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym`)
+    let response = await axios.get(`http://api.giphy.com/v1/gifs/search`, {params: {q: userSearch, api_key: 'MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym' } })
     // console.log(response.data);
     // console.log(response.data.data[0].url);
     appendToDom(response.data.data[0].images.fixed_height.url)
@@ -23,3 +23,9 @@ function clearDiv(){
 }
 
 console.log("Let's get this party started!");
+
+
+
+// http://api.giphy.com/v1/gifs/search?q=${userSearch}&api_key=MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym
+
+// {params: {q: userSearch, api_key: MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym } }
